@@ -30,19 +30,20 @@ This project assumes **all Telnet control traffic is hostile**.
 ┌──────────────┐
 │ Telnet Client│
 └──────┬───────┘
-│
-▼
+       │
+       ▼
 ┌─────────────────────┐
 │ telnet-sanitizer │ ← Drops all Telnet control logic
 │ (policy layer) │
 └──────┬──────────────┘
-│ sanitized bytes only
-▼
+       │ 
+sanitized bytes only
+       ▼
 ┌─────────────────────┐
 │ safe-telnet-parser │ ← Hardened state machine
 └──────┬──────────────┘
-│
-▼
+       │
+       ▼
 ┌──────────────┐
 │ Backend Host │
 └──────────────┘

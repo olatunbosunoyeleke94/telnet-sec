@@ -13,5 +13,8 @@ safe-telnet-parser = { path = "../safe-telnet-parser" }
 telnet-sanitizer = { path = "../telnet-sanitizer" }
 
 [[bin]]
-name = "dummy"
-path = "dummy.rs"
+name = "telnet_parser"
+path = "fuzz_targets/telnet_parser.rs"
+test = false
+doc = false
+bench = false

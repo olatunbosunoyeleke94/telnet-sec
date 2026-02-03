@@ -1,0 +1,22 @@
+[package]
+name = "safe-telnet-parser-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.safe-telnet-parser]
+path = "../safe-telnet-parser"
+
+[[bin]]
+name = "telnet_parser"
+path = "fuzz_targets/telnet_parser.rs"
+test = false
+doc = false
+bench = false
+

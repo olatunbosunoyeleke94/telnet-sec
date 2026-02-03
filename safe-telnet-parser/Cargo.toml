@@ -1,0 +1,16 @@
+[package]
+name = "safe-telnet-parser"
+version = "0.1.0"
+edition = "2024"
+description = "Memory-safe Telnet protocol parser for defensive security and CVE mitigation"
+license = "MIT"
+readme = "../README.md"
+repository = "https://github.com/olatunbosunoyeleke94/telnet-sec"
+keywords = ["telnet", "security", "parser", "cve", "defensive"]
+categories = ["network-programming", "parsing", "security"]
+
+[dependencies]
+
+
+[features]
+debug = []

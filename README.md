@@ -57,6 +57,11 @@ are removed *before* parsing, ensuring protocol state cannot influence
 application-layer behavior.
 
 
+telnet-sanitizer depends on safe-telnet-parser internally.
+
+End users typically only need telnet-sanitizer; 
+the parser crate is exposed separately for advanced use cases and research.
+
 ## 🔒 Security Properties
 
 ✔ Panic-free  
@@ -88,6 +93,64 @@ and forwards only plain user data.
 - Fuzz testing (see below)
 - Regression test covering Telnet user-flag injection
   (e.g. `USER='-f root'`-style attacks)
+
+## Examples
+
+- Tiny Parsing Example (safe-telnet-parser)
+
+```
+use safe_telnet_parser::{TelnetParser, TelnetEvent};
+
+let mut parser = TelnetParser::new();
+
+// Raw Telnet bytes (includes IAC control byte 0xFF)
+let input = b"hello\xFF\xFAworld";
+
+let events = parser.parse(input);
+
+for event in events {
+    if let TelnetEvent::Data(byte) = event {
+        print!("{}", byte as char);
+    }
+}
+
+```
+
+output: 
+```
+hellowworld
+```
+
+- Tiny Sanitizer Example (telnet-sanitizer)
+
+```
+use telnet_sanitizer::TelnetSanitizer;
+
+let mut sanitizer = TelnetSanitizer::new();
+
+// Malicious Telnet payload (IAC-based injection attempt)
+let input = b"-f root\xFF\xFA";
+
+let clean = sanitizer.sanitize(input);
+
+assert_eq!(clean, b"-f root");
+
+```
+
+- Live CVE-style malicious input stripped
+
+Input bytes (attacker-controlled)
+```
+[0x2d, 0x66, 0x20, 0x72, 0x6f, 0x6f, 0x74, 0xff, 0xff]
+
+```
+
+Sanitized output:
+
+```
+"-f root"
+
+```  
 
 ---
 

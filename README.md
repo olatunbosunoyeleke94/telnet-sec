@@ -27,6 +27,8 @@ This project assumes **all Telnet control traffic is hostile**.
 
 ## 🧱 Architecture
 
+```
+
 ┌──────────────┐
 │ Telnet Client│
 └──────┬───────┘
@@ -47,6 +49,8 @@ sanitized bytes only
 ┌──────────────┐
 │ Backend Host │
 └──────────────┘
+
+```
 
 The sanitizer operates as a strict policy boundary: Telnet control bytes
 are removed *before* parsing, ensuring protocol state cannot influence

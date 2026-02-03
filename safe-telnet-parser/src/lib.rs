@@ -4,7 +4,6 @@
 //! defending against malformed control sequences, oversized subnegotiation,
 //! and state desynchronization attacks.
 
-
 mod parser;
 
 pub use parser::{TelnetEvent, TelnetParser};

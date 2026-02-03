@@ -3,11 +3,16 @@
 //! Drops all Telnet control sequences and returns only safe application data.
 //! Intended for legacy Telnet services, proxies, and sandboxes.
 
-
 use safe_telnet_parser::{TelnetEvent, TelnetParser};
 
 pub struct TelnetSanitizer {
     parser: TelnetParser,
+}
+
+impl Default for TelnetSanitizer {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl TelnetSanitizer {

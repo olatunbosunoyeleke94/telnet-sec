@@ -1,4 +1,4 @@
-use safe_telnet_parser::{TelnetParser, TelnetEvent};
+use safe_telnet_parser::{TelnetEvent, TelnetParser};
 
 #[test]
 fn regression_user_flag_injection() {
@@ -12,4 +12,3 @@ fn regression_user_flag_injection() {
         }
     }
 }
-

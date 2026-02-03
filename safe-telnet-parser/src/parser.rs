@@ -25,6 +25,12 @@ pub struct TelnetParser {
     subnegotiation_len: usize,
 }
 
+impl Default for TelnetParser {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl TelnetParser {
     pub fn new() -> Self {
         Self {

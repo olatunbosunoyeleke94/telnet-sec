@@ -1,5 +1,5 @@
-use tokio::net::TcpListener;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use tokio::net::TcpListener;
 
 use telnet_sanitizer::TelnetSanitizer;
 
@@ -35,10 +35,7 @@ async fn main() -> anyhow::Result<()> {
                 println!("--------------------------------");
                 println!("RAW BYTES      : {:?}", input);
                 println!("SANITIZED BYTES: {:?}", sanitized);
-                println!(
-                    "SANITIZED TEXT : {}",
-                    String::from_utf8_lossy(&sanitized)
-                );
+                println!("SANITIZED TEXT : {}", String::from_utf8_lossy(&sanitized));
                 println!("--------------------------------");
 
                 // Echo sanitized output back to client

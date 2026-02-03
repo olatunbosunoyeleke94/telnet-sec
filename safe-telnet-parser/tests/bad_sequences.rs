@@ -1,4 +1,4 @@
-use safe_telnet_parser::{TelnetParser, TelnetEvent};
+use safe_telnet_parser::{TelnetEvent, TelnetParser};
 
 #[test]
 fn repeated_iac_does_not_crash() {
